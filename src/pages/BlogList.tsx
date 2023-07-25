@@ -1,9 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { getItemsList } from '../features/items/itemsSlice'
 import { SingleItem } from '../components/SingleItem'
 
-const Home = () => {
+const Yoga = () => {
   const { itemList } = useAppSelector((store) => store.items)
   const dispatch = useAppDispatch()
 
@@ -32,4 +32,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Yoga
