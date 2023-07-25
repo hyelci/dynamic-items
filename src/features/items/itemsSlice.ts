@@ -1,5 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { CreateItemRequest, Item } from '../../models/item.interface'
+import {
+  CreateItemRequest,
+  FilterRequest,
+  Item,
+} from '../../models/item.interface'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
@@ -22,16 +26,19 @@ const initialState: ItemsState = {
   itemError: false,
 }
 
-export const getItemsList = createAsyncThunk('items/getItemList', async () => {
-  let URL = `https://retoolapi.dev/Fc6Ucd/data`
-  try {
-    const resp = await axios.get(URL)
-    return resp.data
-  } catch (error) {
-    console.error('There is no list')
-    throw error
+export const getItemsList = createAsyncThunk(
+  'items/getItemList',
+  async (filter: FilterRequest) => {
+    let URL = `https://retoolapi.dev/Fc6Ucd/data?q=${filter.query}&_sort=title&_order=${filter.order}`
+    try {
+      const resp = await axios.get(URL)
+      return resp.data
+    } catch (error) {
+      console.error('There is no list')
+      throw error
+    }
   }
-})
+)
 
 export const getItemDetails = createAsyncThunk(
   'item/getItemDetails',

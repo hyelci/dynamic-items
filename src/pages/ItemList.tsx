@@ -7,9 +7,9 @@ const ItemList = () => {
   const { itemList } = useAppSelector((store) => store.items)
   const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    dispatch(getItemsList())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(getItemsList(filter))
+  // }, [dispatch, filter])
 
   return (
     <div className="bg-white py-24 sm:py-32">

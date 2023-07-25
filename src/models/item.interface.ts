@@ -10,3 +10,8 @@ export interface CreateItemRequest {
   description: string
   image: string
 }
+
+export interface FilterRequest {
+  query: string
+  order: string
+}
