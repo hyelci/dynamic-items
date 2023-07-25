@@ -19,7 +19,7 @@ const Home = () => {
             Items
           </h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
-            Here are your items
+            Here are your items list
           </p>
           <div className="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
             {itemList?.map((item) => (

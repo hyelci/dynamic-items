@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { getItemsList } from '../features/items/itemsSlice'
 import { SingleItem } from '../components/SingleItem'
 
-const Yoga = () => {
+const ItemList = () => {
   const { itemList } = useAppSelector((store) => store.items)
   const dispatch = useAppDispatch()
 
@@ -32,4 +32,4 @@ const Yoga = () => {
   )
 }
 
-export default Yoga
+export default ItemList
