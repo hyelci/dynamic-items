@@ -75,6 +75,20 @@ export const editItem = createAsyncThunk(
   }
 )
 
+export const deleteItem = createAsyncThunk(
+  'yoga/deleteYoga',
+  async (id: number) => {
+    let URL = `https://retoolapi.dev/Fc6Ucd/data/${id}`
+    try {
+      const resp = await axios.delete(URL)
+      return resp.data.data
+    } catch (error) {
+      console.error('There is no item delete details')
+      throw error
+    }
+  }
+)
+
 export const itemsSlice = createSlice({
   name: 'items',
   initialState,
@@ -112,7 +126,7 @@ export const itemsSlice = createSlice({
       .addCase(createItem.fulfilled, (state) => {
         state.itemLoading = false
         state.itemError = false
-        toast.success('The yoga type added successfuly')
+        toast.success('The item added successfuly')
       })
       .addCase(createItem.rejected, (state) => {
         state.itemLoading = false
@@ -124,9 +138,22 @@ export const itemsSlice = createSlice({
       .addCase(editItem.fulfilled, (state) => {
         state.itemLoading = false
         state.itemError = false
-        toast.success('The yoga type edited successfully!')
+        toast.success('The item edited successfully!')
       })
       .addCase(editItem.rejected, (state) => {
+        state.itemLoading = false
+        state.itemError = true
+      })
+
+      .addCase(deleteItem.pending, (state) => {
+        state.itemLoading = true
+      })
+      .addCase(deleteItem.fulfilled, (state) => {
+        state.itemLoading = false
+        state.itemError = false
+        toast.success('The item deleted successfully!')
+      })
+      .addCase(deleteItem.rejected, (state) => {
         state.itemLoading = false
         state.itemError = true
       })

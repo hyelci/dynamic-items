@@ -26,7 +26,7 @@ const AddItem = () => {
     e.preventDefault()
     if (request) {
       await dispatch(createItem(request))
-      navigate('/data')
+      navigate('/')
     }
   }
 
@@ -40,14 +40,14 @@ const AddItem = () => {
         <div className="col-span-1">
           <FormRow
             type="text"
-            name="title"
+            name="name"
             value={request.name}
             handleChange={handleInput}
           ></FormRow>
 
           <FormRow
             type="text"
-            name="details"
+            name="description"
             value={request.description}
             handleChange={handleInput}
           ></FormRow>
